@@ -5,11 +5,21 @@
   "repository": "https://github.com/lzbgithubcode/nodejs-koa-template.git",
   "author": "lzb <1835064412@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon bin/start.js",
+    "production": "cross-env NODE_ENV=production nodemon bin/start.js",
+    "build-dev": "pm2 start build.js --env development --watch",
+    "build-prod": "pm2 start build.js --env production --watch"
+  },
   "dependencies": {
     "koa": "2.15.3"
   },
   "engines": {
     "node": ">=16",
     "pnpm": ">=6"
-}
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.0"
+  }
 }
