@@ -9,7 +9,7 @@ app.listen(port, host, function () {
     "服务已启动-环境为【%s】,访问地址为 http://%s:%s",
     config.env,
     host,
-    port
+    port,
   );
 });
 

@@ -1,0 +1,14 @@
+node_modules
+node_modules/.cache
+miniprogram_npm
+scripts/
+.git
+.idea
+.vscode
+.dist
+.svn
+.hg
+coverages
+jsconfig.json
+
+.editorconfig
