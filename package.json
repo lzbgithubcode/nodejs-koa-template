@@ -13,6 +13,7 @@
     "eslint": "eslint --cache --ext .js,.cjs,.ts",
     "eslint:fix": "eslint --cache --fix .  --ext .js,.cjs,.ts",
     "format": "prettier --cache --write  --ignore-unknown ./**/*.{js,cjs,ts,json}",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
