@@ -9,12 +9,11 @@ const requestHandler = require('./app/middlewares/RequestHandler')
 const initRouter = require('./app/routes')
 
 const app = new Koa()
+// 日志中间件
+app.use(loggerHandler)
 
 // 错误中间件
 app.use(errorHandler)
-
-// 日志中间件
-app.use(loggerHandler)
 
 // 参数解析
 app.use(bodyParser())
