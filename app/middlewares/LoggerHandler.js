@@ -44,12 +44,7 @@ log4js.configure({
       // 日志文件按日期（天）切割
       pattern: 'yyyy-MM-dd.log',
       // 输出的日志文件名是都始终包含 pattern 日期结尾
-      alwaysIncludePattern: true,
-      layout: {
-        type: 'json',
-        pattern: '%d %p %c %x{user} %m%n',
-        separator: '\n'
-      }
+      alwaysIncludePattern: true
     }
   },
   // 每一个分类对应一个logger
@@ -64,13 +59,7 @@ log4js.configure({
 const LoggerHandler = async (ctx, next) => {
   // 获取开始时间
   console.log('A-----经过---LoggerHandler--中间件')
-  if (!ctx.logger) ctx.logger = log4js.getLogger()
-  // 添加 trace id
-  const traceId = ctx.get('X-Request-Id') || uuidv4()
-  // 附加 trace id 到 logger 的 context 上，这样后续每个 log 都会携带 trace id
-  ctx.logger.addContext('trace', traceId)
-  // 同时附加请求的 path
-  ctx.logger.addContext('path', ctx.request.path)
+  if (!ctx.logger) ctx.logger = log4js.getLogger('default')
   ctx.logger.error('c额手机哦是打发的撒')
   await next()
   console.log('B-----经过---LoggerHandler--中间件')
