@@ -1,11 +1,12 @@
-const Router = require('@koa/router')
-const initController = require('../controllers')
+const Router = require('@koa/router');
 
-const router = new Router()
+const userRoutes = require('./userRoutes.js');
+
+const router = new Router();
 module.exports = (app) => {
-  // 初始化路由
-  initController(router)
+  // 用户相关接口
+  router.use('/user', userRoutes.routes(), userRoutes.allowedMethods());
 
-  // 路由
-  app.use(router.routes()).use(router.allowedMethods())
-}
+  // 注册路由
+  app.use(router.routes()).use(router.allowedMethods());
+};
