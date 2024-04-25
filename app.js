@@ -1,29 +1,34 @@
-const Koa = require('koa')
-const { bodyParser } = require('@koa/bodyparser')
+const Koa = require('koa');
+const { bodyParser } = require('@koa/bodyparser');
 
-const errorHandler = require('./app/middlewares/ErrorHandler')
-const loggerHandler = require('./app/middlewares/LoggerHandler')
-const corsHandler = require('./app/middlewares/CorsHandler')
-const requestHandler = require('./app/middlewares/RequestHandler')
+const errorHandler = require('./app/middlewares/ErrorHandler');
+const loggerHandler = require('./app/middlewares/LoggerHandler');
+const corsHandler = require('./app/middlewares/CorsHandler');
+const requestHandler = require('./app/middlewares/RequestHandler');
+const responseHandler = require('./app/middlewares/ResponseHandler');
 
-const initRouter = require('./app/routes')
+const initRouter = require('./app/routes');
 
-const app = new Koa()
+const app = new Koa();
+
+// 响应中间件
+app.use(responseHandler);
+
 // 日志中间件
-app.use(loggerHandler)
+app.use(loggerHandler);
 
 // 错误中间件
-app.use(errorHandler)
+app.use(errorHandler);
 
 // 参数解析
-app.use(bodyParser())
+app.use(bodyParser());
 
 // // 跨域
-app.use(corsHandler)
+app.use(corsHandler);
 
 // 请求中间件
-app.use(requestHandler)
+app.use(requestHandler);
 
 // 初始化路由
-initRouter(app)
-module.exports = app
+initRouter(app);
+module.exports = app;

@@ -1,6 +1,7 @@
-// 模拟的用户数据（在实际应用中通常会使用数据库）
-let users = [
-  { id: 1, name: 'Alice', email: 'alice@example.com' },
-  { id: 2, name: 'Bob', email: 'bob@example.com' },
-  { id: 3, name: 'Charlie', email: 'charlie@example.com' }
-];
+const { mongoDB } = require('../db/index.js');
+
+const UserModel = mongoDB.createModel('User', {
+  userName: { type: String, required: true, unique: true }, // 用户名
+  createTime: { type: Date, required: true, default: Date.now() } //创建时间
+});
+module.exports = UserModel;
