@@ -1,9 +1,9 @@
-// const RedisClient = require('./redisClient.js');
+const RedisClient = require('./redisClient.js');
 const MongoDB = require('./mongoDB.js');
 
-// const redisClient = new RedisClient();
+const redisClient = new RedisClient();
 const mongoDB = new MongoDB();
 module.exports = {
-  //   redisClient,
+  redisClient,
   mongoDB
 };

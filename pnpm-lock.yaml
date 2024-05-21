@@ -17,6 +17,7 @@ specifiers:
   mongoose: ^8.3.2
   nodemon: ^3.1.0
   prettier: ^3.2.5
+  uuid: ^9.0.1
 
 dependencies:
   '@koa/bodyparser': 5.1.1_koa@2.15.3
@@ -25,6 +26,7 @@ dependencies:
   koa: 2.15.3
   log4js: 6.9.1
   mongoose: 8.3.2
+  uuid: 9.0.1
 
 devDependencies:
   '@commitlint/cli': 19.2.2
@@ -2371,6 +2373,11 @@ packages:
     dependencies:
       punycode: 2.3.1
     dev: true
+
+  /uuid/9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
 
   /vary/1.1.2:
     resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}

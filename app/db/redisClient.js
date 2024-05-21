@@ -5,6 +5,7 @@ const config = require('../../config/index.js');
 class RedisClient {
   constructor(options = {}) {
     const opts = { host: config.dataLib.redisHost, port: config.dataLib.redisPort, ...options };
+    this.options = opts;
     this.client = new Redis(opts);
     this.initRedis();
   }
@@ -12,12 +13,13 @@ class RedisClient {
    * 初始化
    */
   initRedis() {
-    this.client.on('connect', () => {
-      globalLogger.info('Redis连接成功');
+    this.client.on('connect', (opts) => {
+      globalLogger.info(`😁 Redis连接成功${this.options.host}/${this.options.port}`);
     });
 
     this.client.on('error', (err) => {
-      errorLogger.error(`Redis连接失败--${err}`);
+      errorLogger.error(`😭 Redis连接失败--${err}`);
+      this.quit();
     });
   }
   /**
@@ -28,12 +30,14 @@ class RedisClient {
    */
   async setValue(key, value, expireTime = 10 * 60) {
     try {
-      await this.client.set(key, JSON.stringify(value));
+      // 序列化对象或数组
+      const serializedValue = JSON.stringify(value);
+      await this.client.set(key, serializedValue);
       if (expireTime) {
         await this.client.expire(key, expireTime);
       }
     } catch (err) {
-      errorLogger.error(`Redis的set失败key=${key} value = ${value}--${err}`);
+      errorLogger.error(`😭 Redis的set失败key=${key} value = ${value}--${err}`);
     }
   }
   /**

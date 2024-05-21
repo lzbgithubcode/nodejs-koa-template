@@ -19,9 +19,9 @@ class MongoDB {
   async connect(connectionString) {
     try {
       await mongoose.connect(connectionString, this.options);
-      globalLogger.info(`😁MongoDB连接成功-${connectionString}`);
+      globalLogger.info(`😁 MongoDB连接成功-${connectionString}`);
     } catch (error) {
-      errorLogger.error(`😭MongoDB连接失败- ${connectionString}-${error}`);
+      errorLogger.error(`😭 MongoDB连接失败- ${connectionString}-${error}`);
       process.exit(1); // 处理连接失败的情况
     }
   }

@@ -1,10 +1,11 @@
 /**
  *  返回成功
  */
-const successResponse = (data = null, message = 'success') => {
+const successResponse = (code = 0, success = true, message = '成功', data = null) => {
   return {
-    code: 200,
-    success: true,
+    statusCode: 200,
+    code: code,
+    success: code != 0 ? false : success,
     message,
     data
   };
@@ -15,6 +16,7 @@ const successResponse = (data = null, message = 'success') => {
  */
 const failResponse = (code = 500, message = 'fail') => {
   return {
+    statusCode: code,
     code,
     success: false,
     message,
