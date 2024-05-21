@@ -8,10 +8,10 @@ module.exports = {
   port: '8008',
   // 数据库
   dataLib: {
-    host: '127.0.0.1',
-    port: '3306',
+    host: '192.168.18.114',
+    port: '27017',
     database: 'my_data_base',
-    redisHost: '127.0.0.1',
-    redisPort: '3307'
+    redisHost: '192.168.18.114',
+    redisPort: '6379'
   }
 };
