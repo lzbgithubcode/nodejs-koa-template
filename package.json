@@ -1,9 +1,10 @@
 {
-  "name": "nodejs-koa-template",
-  "version": "1.0.0",
+  "name": "{{name}}",
+  "version": "{{version}}",
+  "description": "{{description}}",
   "main": "index.js",
   "repository": "https://github.com/lzbgithubcode/nodejs-koa-template.git",
-  "author": "lzb <1835064412@qq.com>",
+  "author": "{{author}}",
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon bin/start.js",
